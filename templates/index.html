@@ -1,0 +1,27 @@
+<!doctype html>
+<html ng-app="app">
+  <head ng-controller="head">
+    <meta charset="utf-8">
+    <base href="http://localhost:2010/" target="_blank">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title ng-bind-template="{{title}}"></title>
+    <meta name="description" content="{{description}}">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="referrer" content="origin">
+    <link rel="stylesheet" href="/css/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="/js/angular/angular.js" type="text/javascript" language="javascript"></script>
+    <script src="/js/angular-ui-router/release/angular-ui-router.js" type="text/javascript" language="javascript"></script>
+    <script src="/js/jquery/dist/jquery.js" type="text/javascript" language="javascript"></script>
+    <script src="/js/bootstrap/dist/js/bootstrap.js" type="text/javascript" language="javascript"></script>
+    <script src="/js/scripts/main.js" type="text/javascript" language="javascript"></script>
+  </head>
+  <body>
+   <div class="container"> 
+    <div ui-view="header"></div>
+	<div ui-view="content"></div>
+	<div ui-view="footer"></div>
+   </div>   
+  </body>
+ </html> 

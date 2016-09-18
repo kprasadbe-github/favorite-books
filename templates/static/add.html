@@ -1,0 +1,54 @@
+<div class="container" ng-controller="add">
+  <div class="row">
+   <form name="product" method="post">
+     <div class="col-md-12">Add New Product</div>
+
+       <h5 class="text-danger" ng-show="error && errorMessage != ''">{{errorMessage}}</h5>
+     <div class="row">
+  	  <div class="col-md-6">
+       <div class="form-group">
+         <label>Title</label>
+         <input type="text" ng-model="name" name="name" class="form-control" required>
+         <h5 class="text-danger" ng-show="(product.name.$touched || error) && product.name.$error.required">Title is required</h5>
+       </div>
+      </div>
+      <div class="col-md-6">
+       <div class="form-group">
+         <label>Authour</label>
+         <input type="text"  value="" ng-model="authour" name="authour" class="form-control" required >
+         <h5 class="text-danger" ng-show="(product.authour.$touched || error) && product.authour.$error.required">Authour is required</h5>
+        </div>
+      </div>
+    </div>  
+    <div class="row">
+      <div class="col-md-6">
+       <div class="form-group">
+         <label>Description</label>
+         <textarea ng-model="desc" name="desc" class="form-control" required></textarea>
+         <h5 class="text-danger" ng-show="(product.desc.$touched || error) && product.desc.$error.required">Description is required</h5>
+        </div>
+      </div>
+
+
+      <div class="col-md-6">
+       <div class="form-group">
+         <label>Published Year</label>
+         <input type="text"  value="" ng-model="year" name="year" class="form-control" required maxlength="4">
+         <h5 class="text-danger" ng-show="(product.year.$touched || error) && product.year.$error.required">Publish Year is required</h5>
+        </div>
+      </div> 
+  	 </div>     
+  	 <div class="row">
+      <div class="col-md-6">
+       <div class="form-group">
+         <label>ISBN</label>
+         <textarea ng-model="isbn" name="isbn" class="form-control" required></textarea>
+         <h5 class="text-danger" ng-show="(product.isbn.$touched || error) && product.isbn.$error.required">ISBN is required</h5>
+        </div>
+      </div>
+  	  <div class="col-md-6">
+  	  	<input type="button" Value="Add New Product" class="btn btn-success" ng-click="addnew()" />
+  	  </div>
+  	 </div> 
+  </div>
+ </div>

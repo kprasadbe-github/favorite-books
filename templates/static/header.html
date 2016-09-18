@@ -1,0 +1,9 @@
+<header>
+<ul class="nav navbar-nav navbar-right">
+        <li><a ng-href="/index/">Search</a></li>
+        <li><a ng-href="/add/" ng-if="loged">Add new book</a></li>
+        <li><a ng-href="/login/" ng-if="!loged">Login</a></li>
+        <li><a ng-href="/signup/" ng-if="!loged">SignUp</a></li>       
+        <li><a ng-click="logout()" href="javascript:void(0);" ng-if="loged">{{name}} Logout</a></li>
+</ul>
+</header>

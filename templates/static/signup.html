@@ -1,0 +1,36 @@
+<div class="container" ng-controller="signup">
+  <div class="row">
+   <form name="signup" method="post">
+     <h1 class="col-md-12">Signup</h1>
+  	 <div class="col-md-12">
+  	 <h5 class="text-danger" ng-show="error && errorMessage != ''" ng-bind-html-unsafe="{{errorMessage}}">{{errorMessage}}</h5>
+       <div class="form-group">
+         <label>Username</label> 
+         <input type="email" ng-model="username" name="username" class="form-control" required>
+         <h5 class="text-danger" ng-show="(signup.username.$touched || error) && signup.username.$error.required">Username/Email is required</h5>
+         <h5 class="text-danger" ng-show="(signup.username.$touched || error) && signup.username.$invalid && !signup.username.$error.required">Email is invalid</h5>
+       </div>
+     </div>  
+      <div class="col-md-12">
+       <div class="form-group">
+         <label>Password</label>
+         <input type="password"  value="" ng-model="password" name="password" class="form-control" required maxlength="6">
+         <h5 class="text-danger" ng-show="(signup.password.$touched || error) && signup.password.$error.required">Password is required</h5>
+        </div>
+      </div> 
+      <div class="col-md-12">
+       <div class="form-group">
+         <label>Confirm Password</label>
+         <input type="password"  value="" ng-model="password2" name="password2" class="form-control" required maxlength="6">
+         <h5 class="text-danger" ng-show="(signup.password2.$touched || error) && signup.password2.$error.required">Confirm Password is required</h5>
+         <h5 class="text-danger" ng-show="(signup.password2.$touched || error) && password != password2">Password is not same</h5>
+        </div>
+      </div> 
+  	 </div>
+  	 <div class="col-md-12">
+  	  <div class="col-md-6">
+  	  	<input type="button" Value="Signup" class="btn btn-success" ng-click="signupform()" />
+  	  </div>
+  	 </div> 
+  </div>
+ </div>
