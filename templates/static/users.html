@@ -1,0 +1,49 @@
+<div class="container" ng-controller="users">
+  <div class="row">
+  	 <div class="col-md-12">
+  	  <div class="col-md-6">
+       <div class="form-group">
+         <label>Filter User</label>
+         <input type="text" ng-model="search" class="form-control">
+       </div>
+      </div>
+      <div class="col-md-6">
+       
+      </div> 
+  	 </div>
+  </div>
+  <div class="row">
+    <table cellpadding="5" cellspacing="5" class="table">
+      <tr>
+        <th>Users List</th>
+      </tr>
+      <tr ng-repeat="i in users|filter:search">
+        <td>
+        <div class="panel panel-default">
+           <div class="panel-heading">Watchlist Items for {{i.email}}</div>
+           <div class="panel-body">
+             <table cellpadding="5" cellspacing="5" class="table table-border">
+              <tr ng-show="i.watchlist.length > 0">          
+                <th>Book Name</th>
+                <th>ISBN</th>
+                <th>Authour</th>
+                <th>Details</th>
+              </tr>
+
+              <tr ng-show="i.watchlist.length == 0">
+               <th colspan="4">No Books For this user</th>
+              </tr> 
+              <tr ng-repeat="j in i.watchlist" ng-show="i.watchlist.length > 0">
+                <td>{{j.name}}</td>
+                <td>{{j.isbn}}</td>
+                <td>{{j.authour}}</td>
+                <td>Published Year {{j.published}}</td>       
+              </tr>  
+           </table>
+          </div> 
+          </div>   
+        </td>
+      </tr>      
+    </table>
+  </div>
+</div>

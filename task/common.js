@@ -50,6 +50,22 @@ exports.checkuserAvailable = function(req,mysql)
 		mysql.query(strQuery,escape_data,defered.makeNodeResolver());
 		return defered.promise;
 }
+exports.userList = function(req,mysql)
+{	
+	    var escape_data = [];
+    	var strQuery = 'SELECT * FROM users';
+	    var defered = q.defer();
+		mysql.query(strQuery,escape_data,defered.makeNodeResolver());
+		return defered.promise;
+}
+exports.getUserWatchList = function(req,mysql,id)
+{	
+	    var escape_data = [id];
+    	var strQuery = 'SELECT a.* FROM ((SELECT b.*,w.user_id AS uid FROM book AS b INNER JOIN watchlist AS w ON b.user_id = w.user_id INNER JOIN users AS u ON u.id = w.user_id) UNION ALL (SELECT b.*,b.user_id AS uid FROM book AS b  INNER JOIN users AS u ON u.id = b.user_id)) AS a WHERE  a.uid = ? GROUP BY a.id DESC';
+	    var defered = q.defer();
+		mysql.query(strQuery,escape_data,defered.makeNodeResolver());
+		return defered.promise;
+}
 exports.insertUser = function(req,mysql)
 {	    
 	    var escape_data = [req.query['email'],req.query['md5password'],req.query['salt'],req.query['ref'],req.query['ref_id']];

@@ -17,6 +17,42 @@ module.exports = function(action,db)
      res.end();
      return false;
   });
+  action.get('/userslist',function(req,res)
+  {
+  	   var q = require('q');
+       q.all([common.userList(req,db.mysql)]).then(function(result){
+            var async = require('async');
+            var data = [];
+            var m = 0;
+            for(i in result[0][0])
+            {
+            	data.push(function(cb)
+            	{
+                   q.all([common.getUserWatchList(req,db.mysql,result[0][0][m].id)]).then(function(result1){
+                     
+                      result[0][0][m]['watchlist'] = result1[0][0];
+                      m++;
+                      cb(null);
+
+                   }).fail(function (error){
+							console.log("Error : "+error.stack);
+							throw error;
+			        }).done();
+            	});
+            }	
+            
+            async.waterfall(data,function(err,slot)
+			 {
+				    
+					 res.send(JSON.stringify(result[0][0]));
+					 res.end();return false;
+			 });
+             
+       }).fail(function (error){
+					console.log("Error : "+error.stack);
+					throw error;
+	   }).done()
+  });
   action.get('/watchlist',function(req,res)
   {
         var data = {};

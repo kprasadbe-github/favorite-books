@@ -114,6 +114,27 @@ function signup($scope,$rootScope,$http,logeAuthService)
    	  
     }
 }
+function users($scope,$rootScope,$http,logeAuthService)
+{
+	$scope.users = [];
+    $scope.userslist = function()
+	{
+		  var req = {
+		  	         method:'GET',
+		             url:'/userslist',
+		             headers: {
+					   'Content-Type': 'JSON'
+					 }
+		            };
+          $http(req).then(function(response)
+          {
+          	 console.log(response);
+             $scope.users = response.data;      
+          });
+
+	}
+	$scope.userslist();
+}
 function login($scope,$rootScope,$http,logeAuthService)
 {
    $scope.error = false;	
@@ -216,6 +237,7 @@ app.service('logeAuthService',logeAuthService);
 app.controller('head',head);
 app.controller('login',login);
 app.controller('signup',signup);
+app.controller('users',users);
 app.controller('add',add);
 app.controller('searchbooks',searchBooks);
 app.config(function($stateProvider, $urlRouterProvider,$locationProvider) {  
@@ -250,6 +272,13 @@ app.config(function($stateProvider, $urlRouterProvider,$locationProvider) {
          views :{
 		 'header':{templateUrl:'/templates/static/header.html'},
 		 'content':{templateUrl:'/templates/static/add.html'},	
+		 'footer':{templateUrl:'/templates/static/footer.html'}
+     }
+   }).state('users', {   
+     url:'/users/',
+         views :{
+		 'header':{templateUrl:'/templates/static/header.html'},
+		 'content':{templateUrl:'/templates/static/users.html'},	
 		 'footer':{templateUrl:'/templates/static/footer.html'}
      }
    });  

@@ -58,7 +58,7 @@ function setupMiddleware() {
   //app.use(authMiddleware());
   init.use(express.static(path.join(__dirname, 'public'), { maxAge: 1 }));  
   init.use(['/templates/static/'], express.static(__dirname + '/templates/static/'));
-  init.use(['/index','/login','/signup','/add'], express.static(__dirname + '/templates'));
+  init.use(['/index','/login','/signup','/add','/users'], express.static(__dirname + '/templates'));
   init.use(['/js','/css'], express.static(__dirname + '/public/bower_components'));
   init.use(bodyParser.json());
   init.use(bodyParser.urlencoded({ extended: false }));
